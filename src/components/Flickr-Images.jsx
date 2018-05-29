@@ -15,7 +15,7 @@ function CreatePhoto(props) {
     const urlImage = `https://www.flickr.com/photos/${USER_ID}/${props.ID}`;
     return (
         <a href={urlImage}>
-            <img src={urlStaticImage} alt={props.title}/>
+            <img src={urlStaticImage} title="Click me" alt={props.title}/>
         </a>
     );
 }
@@ -29,9 +29,7 @@ function PhotoList({ photos }) {
                     * text-center: to center the heading
                     * d-incline-block: enable this to add mb-3 (margin-bottom: 3)
                     */
-                    <div className="text-center d-inline-block col-sm-6 mb-3">
-                        <h3>{photo.title}</h3>
-                        {/* <p> You can add description here. </p> */}
+                    <div className="text-center d-inline-block col-sm-6 mb-3 border-bottom photolist">
                         <CreatePhoto
                             key={photo.secret}
                             farmID={photo.farm}
@@ -40,6 +38,8 @@ function PhotoList({ photos }) {
                             secret={photo.secret}
                             title={photo.title}
                         />
+                        <h3>{photo.title}</h3>
+                        {/* <p> You can add description here. </p> */}
                     </div>
                 )}
             )}
@@ -65,7 +65,9 @@ class FlickrImages extends Component {
 
     render(){
         return (
-            <PhotoList photos={this.state.photos} />
+            <div className="container">
+                <PhotoList photos={this.state.photos} />
+            </div>
         );
     }
 }
