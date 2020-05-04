@@ -3,8 +3,8 @@ import Axios from 'axios';
 import './Flickr-Images.css';
 
 
-const API_KEY = "3d33912c54e8012c005303344db7f3ae";
-const USER_ID = "153792492%40N02";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const USER_ID = process.env.REACT_APP_USER_ID;
 const URL = "https://api.flickr.com/services/rest/" +
             `?method=flickr.photos.search&api_key=${API_KEY}` +
             `&user_id=${USER_ID}&format=json&nojsoncallback=1`;
